@@ -1,0 +1,35 @@
+.body {
+    background-color: antiquewhite;
+}
+
+.centerGame {
+    display: flex;
+    align-content: space-around;
+    text-align: justify;
+}
+
+.centerShop {
+    display: flex;
+    align-content: space-around;
+    text-align: center;
+    list-style: none;
+}
+
+.left {
+    display: block;
+    margin-left: 1em;
+}
+
+.right {
+    display: inline-flex;
+    margin-left: 75%;
+}
+
+#hClass {
+    text-align: center;
+    color: rgb(179, 122, 38);
+}
+
+#toastImg {
+    width:50%;
+}
