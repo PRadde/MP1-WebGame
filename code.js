@@ -8,15 +8,18 @@ var plusAdderTwo = 0;
 var multiPlusCost = 3000;
 var multiPlus = 0;
 
+var plusAdderTot = plusAdderOne+plusAdderTwo;
 var endGame = 1;
 
-//adds to the click counter 
+//adds to the click counter, modified by the various shop outputs
+//multiplicitive or additive (either inside or outside the multiplicitive)
+//there is also a endgame state which ends the click counter
 function onClick() {
         clicks += endGame*((multiplier*(multiPlus+1))+plusAdderOne+plusAdderTwo);
         document.getElementById("clicks").innerHTML = clicks;
 };
 
-// this function 
+//this function adds a plus 1 to the multiplier in the click function
 function lowShop() {
     if (clicks >= lowShopCost) {
         clicks -= lowShopCost;
@@ -28,7 +31,7 @@ function lowShop() {
     }
 }
 
-//
+//this function adds 5 to each click outside the multiplier
 function plusShopOne() {
     if (clicks >= plusShopOneCost) {
         clicks -= plusShopOneCost;
@@ -40,7 +43,7 @@ function plusShopOne() {
     }
 }
 
-//
+//this function adds one click each click effected by the multiplier
 function multiPlusFunc() {
     if (clicks >= multiPlusCost) {
         clicks -= multiPlusCost;
@@ -52,6 +55,7 @@ function multiPlusFunc() {
     }
 }
 
+//this function adds 50! to each click outside the multiplier
 function plusShopTwo() {
     if (clicks >= plusShopTwoCost) {
         clicks -= plusShopTwoCost;
@@ -63,7 +67,8 @@ function plusShopTwo() {
     }
 }
 
-// win game function
+//win game function, sets winGame variable to 0
+//stopping the click function from adding to counter
 function winGame() {
     if (clicks >= 100000) {
         endGame = 0;
