@@ -18,7 +18,30 @@ var multiPlus = 0;
 //end game trigger/global multiplier (1 is normal game runing 0 locks out click function)
 var plusAdderTotal = 0;
 var endGame = 1;
-var endCounter = 1;
+var endCounter = 0;
+
+//Timer variables
+var seconds = 0;
+var minutes = 0;
+var hours = 0;
+var endTimer = 1;
+
+function startTimer() {
+    if (endTimer = 1) {
+        seconds ++;
+        if (seconds > 59) {
+            seconds = 0;
+            minutes ++;
+            if (minutes > 59) {
+                minutes = 0;
+                hours ++;
+            }
+        }
+    }
+    document.getElementById("seconds").innerHTML = seconds;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("hours").innerHTML = hours;
+}
 
 //adds to the click counter, modified by the various shop outputs
 //multiplicitive or additive (either inside or outside the multiplicitive)
@@ -27,6 +50,10 @@ function onClick() {
         clicks += endGame*((multiplier*(multiPlus+1))+plusAdderOne+plusAdderTwo);
         document.getElementById("clicks").innerHTML = clicks;
         endCounter ++;
+        document.getElementById("endCounter").innerHTML = endCounter;
+        if (clicks == 1){
+            startTimer()
+        }
 };
 
 //this function adds a plus 1 to the multiplier in the click function
