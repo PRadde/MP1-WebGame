@@ -1,15 +1,24 @@
+//initial click amount, set to zero
 var clicks = 100250;
+//initial multiplier, set at 1
 var multiplier = 1;
+//shop for multiplier, initial cost of 101
 var lowShopCost = 101;
+//variables for first +5 additive shop
 var plusShopOneCost = 525;
 var plusAdderOne = 0;
+//variables for second +50 additive shop
 var plusShopTwoCost = 10000;
 var plusAdderTwo = 0;
+//variables for in multiplier additive shop, +1
 var multiPlusCost = 3000;
 var multiPlus = 0;
 
-var plusAdderTot = plusAdderOne+plusAdderTwo;
+//end game variables, total additive (adder one and two),
+//end game trigger/global multiplier (1 is normal game runing 0 locks out click function)
+var plusAdderTot = 0;
 var endGame = 1;
+var endCounter = 1;
 
 //adds to the click counter, modified by the various shop outputs
 //multiplicitive or additive (either inside or outside the multiplicitive)
@@ -17,6 +26,7 @@ var endGame = 1;
 function onClick() {
         clicks += endGame*((multiplier*(multiPlus+1))+plusAdderOne+plusAdderTwo);
         document.getElementById("clicks").innerHTML = clicks;
+        endCounter ++;
 };
 
 //this function adds a plus 1 to the multiplier in the click function
@@ -36,10 +46,12 @@ function plusShopOne() {
     if (clicks >= plusShopOneCost) {
         clicks -= plusShopOneCost;
         plusAdderOne += 5;
+        plusAdderTot += 5;
         plusShopOneCost += (plusAdderOne*plusAdderOne+525);
         document.getElementById("plusShopOneCost").innerHTML = plusShopOneCost;
         document.getElementById("clicks").innerHTML = clicks;
         document.getElementById("plusAdderOne").innerHTML = plusAdderOne;
+        document.getElementById("plusAdderTot").innerHTML = plusAdderTot;
     }
 }
 
@@ -60,10 +72,12 @@ function plusShopTwo() {
     if (clicks >= plusShopTwoCost) {
         clicks -= plusShopTwoCost;
         plusAdderTwo += 50;
+        plusAdderTot += 50;
         plusShopTwoCost = 10000+(plusAdderTwo*100);
         document.getElementById("plusShopTwoCost").innerHTML = plusShopTwoCost;
         document.getElementById("clicks").innerHTML = clicks;
         document.getElementById("plusAdderTwo").innerHTML = plusAdderTwo;
+        document.getElementById("plusAdderTot").innerHTML = plusAdderTot;
     }
 }
 
