@@ -1,5 +1,5 @@
 //initial click amount, set to zero
-var clicks = 100250;
+var clicks = 0;
 //initial multiplier, set at 1
 var multiplier = 1;
 //shop for multiplier, initial cost of 101
@@ -26,8 +26,9 @@ var minutes = 0;
 var hours = 0;
 var endTimer = 1;
 
+//timer function that should end when 
 function startTimer() {
-    if (endTimer = 1) {
+    setTimeout( function() {if (endTimer = 1) {
         seconds ++;
         if (seconds > 59) {
             seconds = 0;
@@ -41,6 +42,8 @@ function startTimer() {
     document.getElementById("seconds").innerHTML = seconds;
     document.getElementById("minutes").innerHTML = minutes;
     document.getElementById("hours").innerHTML = hours;
+    startTimer();
+    }, 1000)
 }
 
 //adds to the click counter, modified by the various shop outputs
