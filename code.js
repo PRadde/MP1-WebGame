@@ -16,7 +16,7 @@ var multiPlus = 0;
 
 //end game variables, total additive (adder one and two),
 //end game trigger/global multiplier (1 is normal game runing 0 locks out click function)
-var plusAdderTot = 0;
+var plusAdderTotal = 0;
 var endGame = 1;
 var endCounter = 1;
 
@@ -46,12 +46,11 @@ function plusShopOne() {
     if (clicks >= plusShopOneCost) {
         clicks -= plusShopOneCost;
         plusAdderOne += 5;
-        plusAdderTot += 5;
+        plusAdderTotal += 5;
         plusShopOneCost += (plusAdderOne*plusAdderOne+525);
         document.getElementById("plusShopOneCost").innerHTML = plusShopOneCost;
         document.getElementById("clicks").innerHTML = clicks;
-        document.getElementById("plusAdderOne").innerHTML = plusAdderOne;
-        document.getElementById("plusAdderTot").innerHTML = plusAdderTot;
+        document.getElementById("plusAdderTotal").innerHTML = plusAdderTotal;
     }
 }
 
@@ -72,16 +71,15 @@ function plusShopTwo() {
     if (clicks >= plusShopTwoCost) {
         clicks -= plusShopTwoCost;
         plusAdderTwo += 50;
-        plusAdderTot += 50;
+        plusAdderTotal += 50;
         plusShopTwoCost = 10000+(plusAdderTwo*100);
         document.getElementById("plusShopTwoCost").innerHTML = plusShopTwoCost;
         document.getElementById("clicks").innerHTML = clicks;
-        document.getElementById("plusAdderTwo").innerHTML = plusAdderTwo;
-        document.getElementById("plusAdderTot").innerHTML = plusAdderTot;
+        document.getElementById("plusAdderTotal").innerHTML = plusAdderTotal;
     }
 }
 
-//win game function, sets winGame variable to 0
+//win game function, sets endGame variable to 0
 //stopping the click function from adding to counter
 function winGame() {
     if (clicks >= 100000) {
